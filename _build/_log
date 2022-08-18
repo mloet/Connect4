@@ -1,0 +1,24 @@
+### Starting build.
+# Target: test.ml.depends, tags: { package(ANSITerminal), package(oUnit), package(str), debug, extension:ml, file:test.ml, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package oUnit -package ANSITerminal -package str -modules test.ml > test.ml.depends
+# Target: connectai.mli.depends, tags: { package(ANSITerminal), package(oUnit), package(str), debug, extension:mli, file:connectai.mli, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package oUnit -package ANSITerminal -package str -modules connectai.mli > connectai.mli.depends # cached
+# Target: connectx.mli.depends, tags: { package(ANSITerminal), package(oUnit), package(str), debug, extension:mli, file:connectx.mli, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package oUnit -package ANSITerminal -package str -modules connectx.mli > connectx.mli.depends # cached
+# Target: connectx.cmi, tags: { package(ANSITerminal), package(oUnit), package(str), byte, compile, debug, extension:mli, file:connectx.mli, interf, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -g -package oUnit -package ANSITerminal -package str -o connectx.cmi connectx.mli
+# Target: connectai.cmi, tags: { package(ANSITerminal), package(oUnit), package(str), byte, compile, debug, extension:mli, file:connectai.mli, interf, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -g -package oUnit -package ANSITerminal -package str -o connectai.cmi connectai.mli
+# Target: test.cmo, tags: { package(ANSITerminal), package(oUnit), package(str), byte, compile, debug, extension:cmo, extension:ml, file:test.cmo, file:test.ml, implem, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -g -package oUnit -package ANSITerminal -package str -o test.cmo test.ml
+# Target: connectai.ml.depends, tags: { package(ANSITerminal), package(oUnit), package(str), debug, extension:ml, file:connectai.ml, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package oUnit -package ANSITerminal -package str -modules connectai.ml > connectai.ml.depends # cached
+# Target: connectx.ml.depends, tags: { package(ANSITerminal), package(oUnit), package(str), debug, extension:ml, file:connectx.ml, ocaml, ocamldep, quiet, traverse }
+ocamlfind ocamldep -package oUnit -package ANSITerminal -package str -modules connectx.ml > connectx.ml.depends # cached
+# Target: connectai.cmo, tags: { package(ANSITerminal), package(oUnit), package(str), byte, compile, debug, extension:cmo, extension:ml, file:connectai.cmo, file:connectai.ml, implem, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -g -package oUnit -package ANSITerminal -package str -o connectai.cmo connectai.ml
+# Target: connectx.cmo, tags: { package(ANSITerminal), package(oUnit), package(str), byte, compile, debug, extension:cmo, extension:ml, file:connectx.cmo, file:connectx.ml, implem, ocaml, quiet, traverse }
+ocamlfind ocamlc -c -g -package oUnit -package ANSITerminal -package str -o connectx.cmo connectx.ml
+# Target: test.byte, tags: { package(ANSITerminal), package(oUnit), package(str), byte, debug, dont_link_with, extension:byte, file:test.byte, link, ocaml, program, quiet, traverse }
+ocamlfind ocamlc -linkpkg -g -package oUnit -package ANSITerminal -package str connectx.cmo connectai.cmo test.cmo -o test.byte
+# Compilation successful.
